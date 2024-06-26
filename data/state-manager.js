@@ -1,4 +1,4 @@
-import { DIRECTIONS, GAME_STATUSES } from "./constants.js";
+import { DIRECTIONS, GAME_STATUSES, PLAYERS } from "./constants.js";
 
 // TODO: change points structure
 const _state = {
@@ -6,8 +6,8 @@ const _state = {
   points: {
     google: 0,
     players: {
-      1: { id: 1, value: 0 },
-      2: { id: 2, value: 0 },
+      [PLAYERS.PLAYER1]: { value: 0 },
+      [PLAYERS.PLAYER2]: { value: 0 },
     },
   },
   settings: {
@@ -24,8 +24,8 @@ const _state = {
       y: 0,
     },
     players: {
-      1: { x: 1, y: 0 },
-      2: { x: 1, y: 1 },
+      [PLAYERS.PLAYER1]: { x: 1, y: 0 },
+      [PLAYERS.PLAYER2]: { x: 1, y: 1 },
     },
   },
 };
