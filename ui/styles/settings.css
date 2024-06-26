@@ -1,0 +1,25 @@
+.settings__container {
+  position: relative;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.setting {
+
+}
+
+.settings__item {
+  padding: 6px 12px;
+}
+
+.setting__titleElement {
+  color: rgb(182, 253, 229);
+
+}
+
+.setting__settingElement {
+  color: #ffff;
+  background-color: rgb(25, 26, 28);
+}

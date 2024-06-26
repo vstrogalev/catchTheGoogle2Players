@@ -1,6 +1,6 @@
 import { subscribe } from "./data/state-manager.js";
 import { AppComponent } from "./ui/App.component.js";
-import { bindKeyboardsControlForMovePlayer1, bindVoiceRecognitionForMovingPlayer2 } from "./ui/controls.js";
+import { bindKeyboardsControlForMovePlayers } from "./ui/controls.js";
 
 const rootElement = document.getElementById('root');
 
@@ -14,8 +14,8 @@ function renderApp() {
 
 renderApp();
 
-bindKeyboardsControlForMovePlayer1();
+bindKeyboardsControlForMovePlayers();
 
-bindVoiceRecognitionForMovingPlayer2();
+// bindVoiceRecognitionForMovingPlayer2();
 
 subscribe(renderApp);

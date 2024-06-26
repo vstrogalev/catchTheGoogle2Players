@@ -1,0 +1,27 @@
+.app {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url("https://s3-alpha-sig.figma.com/img/a8d6/1051/fca57085aa683496fcdc5df0688e22d6?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iQBLXYtEhE9C8dtEhV97V5b0JrYwH3iFj5uQBpoziM45wUhYSrzXCljOTVsLif-4d2ZOdSfPlG7rh5e-HkasSden6wEzcGKuH4m31dodS1HGNFVCUvNt38T4lcg5V2mc0O0861M9SLYZtUAUi13WyGX0L19R~d9XmOm0pF~SUgjjBTc8BSHQarM1xR0-Mm5iLEwYYxAE0FNYawoPlFv-s3HEubmMKAsdhtzEvSqcdn0~bvZZ2LFss0HsWdGvIhTpsHu2~xH75WIxXrZrcuNz81ZX92k~nG3nn7g9qLJbD3n7010PNGYEWR4p7sUUII~E5s7KPYoNvt8parzJ1ewZpQ__") no-repeat center center;
+  background-size: cover;
+}
+
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(70px);
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}

@@ -1,0 +1,23 @@
+.board {
+  margin-top: 36px;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.board__row {
+  display: flex;
+  gap: 12px;
+}
+
+.board__item {
+  aspect-ratio: 1/1;
+  border: 2px solid rgb(153, 155, 149);
+  border-radius: 5px;
+  background: rgba(110, 117, 102, 0.3);
+  cursor: pointer;
+  padding: 6px 12px;
+  display: grid;
+  place-items: center;
+}
