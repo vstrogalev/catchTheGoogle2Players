@@ -1,5 +1,5 @@
-import { DIRECTIONS, PLAYERS } from "../data/constants.js";
-import { movePlayer } from "../data/state-manager.js";
+import { DIRECTIONS, PLAYERS } from "../../data/constants.js";
+import { movePlayer } from "../../data/state-manager.js";
 
 export function bindKeyboardsControlForMovePlayers() {
   // window = publisher/subject

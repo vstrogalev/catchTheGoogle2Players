@@ -2,7 +2,7 @@ import { DIRECTIONS, GAME_STATUSES, PLAYERS } from "./constants.js";
 
 // TODO: change points structure
 const _state = {
-  gameStatus: GAME_STATUSES.IN_PROGRESS,
+  gameStatus: GAME_STATUSES.SETTINGS,
   points: {
     google: 0,
     players: {
@@ -56,7 +56,6 @@ function _moveGoogleToRandomPosition() {
     return;
   }
 
-  // TODO: for ()
   if (_isCellOccupiedByPlayer({ x: newX, y: newY })) {
     _moveGoogleToRandomPosition();
     return;
@@ -81,7 +80,8 @@ function _play() {
   }, 3000);
 }
 
-_play();
+// TODO move to Play component
+// _play();
 
 function _catchGoogle(playerId) {
   const points = _state.points.players[playerId];
@@ -134,7 +134,7 @@ export function getPlayerPositions() {
 export function playAgain() {
   _state.gameStatus = GAME_STATUSES.IN_PROGRESS;
   _state.points.google = 0;
-  _state.points.players.forEach((points) => (points.value = 0));
+  Object.values(_state.points.players).forEach(player => player.value = 0);
   _play();
   _observer();
 }
@@ -185,4 +185,11 @@ function _isCellOccupiedByGoogle({ x, y }) {
     return true;
   }
   return false;
+}
+
+export function getPointsTo() {
+  return {
+    pointsToWin: _state.settings.pointsToWin,
+    pointsToLose: _state.settings.pointsToLose,
+  };
 }

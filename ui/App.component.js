@@ -1,27 +1,39 @@
 import { GAME_STATUSES } from "../data/constants.js";
-import { getGameStatus } from "../data/state-manager.js";
+import { getGameStatus, playAgain } from "../data/state-manager.js";
 import { WinComponent } from "./Win/Win.component.js";
-import { GridComponent } from "./Grid/Grid.component.js";
-import { ResultPanelComponent } from "./ResultPanel/ResultPanel.component.js";
+import { GridComponent } from "./components/Grid.component.js";
+import { ResultPanelComponent } from "./components/ResultPanel.component.js";
+import { createNode } from "../utils/createNode.js";
+import { Button } from "./components/Button.js";
+import { Settings } from "./components/Settings.js";
 
 export function AppComponent() {
-  const element = document.createElement("div");
+  const appElement = createNode("div", "app");
 
   const status = getGameStatus();
 
   const transitions = {
     [GAME_STATUSES.IN_PROGRESS]: () => {
       const resultPanelElement = ResultPanelComponent();
-      element.append(resultPanelElement);
+      appElement.append(resultPanelElement);
       const gridElement = GridComponent();
-      element.append(gridElement);
+      appElement.append(gridElement);
     },
     [GAME_STATUSES.WING]: () => {
       const loseElement = WinComponent();
-      element.append(loseElement);
+      appElement.append(loseElement);
     },
     [GAME_STATUSES.SETTINGS]: () => {
-      console.warn("NOT IMPLEMENTED YET");
+      const element = createNode("div", "settings main");
+
+      const settingsContainer = Settings();
+
+      const button = Button("START GAME", () => {
+        playAgain();
+      });
+
+      element.append(settingsContainer, button);
+      appElement.append(element);
     },
     [GAME_STATUSES.WIN]: () => {
       console.warn("NOT IMPLEMENTED YET");
@@ -30,5 +42,5 @@ export function AppComponent() {
 
   transitions[status]();
 
-  return element;
+  return appElement;
 }

@@ -1,15 +1,15 @@
 import { subscribe } from "./data/state-manager.js";
 import { AppComponent } from "./ui/App.component.js";
-import { bindKeyboardsControlForMovePlayers } from "./ui/controls.js";
+import { bindKeyboardsControlForMovePlayers } from "./ui/components/controls.js";
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 
 function renderApp() {
-    rootElement.innerHTML = '';
+  rootElement.innerHTML = "";
 
-    const appElement = AppComponent();
+  const appElement = AppComponent();
 
-    rootElement.append(appElement);
+  rootElement.append(appElement);
 }
 
 renderApp();
