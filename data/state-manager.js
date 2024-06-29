@@ -66,18 +66,33 @@ function _moveGoogleToRandomPosition() {
 let _intervalId;
 
 function _play() {
-  _intervalId = setInterval(() => {
-    _state.points.google++;
+  _state.points.google++;
 
-    if (_state.points.google === _state.settings.pointsToLose) {
-      clearInterval(_intervalId);
-      _state.gameStatus = GAME_STATUSES.LOSE;
-    } else {
-      _moveGoogleToRandomPosition();
-    }
+  if (_state.points.google === _state.settings.pointsToLose) {
+    clearInterval(_intervalId);
+    _state.gameStatus = GAME_STATUSES.LOSE;
+  } else {
+    _moveGoogleToRandomPosition();
+  }
 
-    _observer();
-  }, 3000);
+  _state.positions.google.x = 0;
+  _state.positions.google.y = 0;
+
+  _observer();
+
+
+  // _intervalId = setInterval(() => {
+  //   _state.points.google++;
+
+  //   if (_state.points.google === _state.settings.pointsToLose) {
+  //     clearInterval(_intervalId);
+  //     _state.gameStatus = GAME_STATUSES.LOSE;
+  //   } else {
+  //     _moveGoogleToRandomPosition();
+  //   }
+
+  //   _observer();
+  // }, 3000);
 }
 
 // TODO move to Play component

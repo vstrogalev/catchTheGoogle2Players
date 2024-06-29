@@ -18,3 +18,5 @@ export const PLAYERS = {
   PLAYER2: 'Player 2',
   GOOGLE: 'Google'
 }
+
+export const _gridItemSize = 85;

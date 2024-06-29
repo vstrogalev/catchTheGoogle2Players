@@ -14,10 +14,13 @@ export function AppComponent() {
 
   const transitions = {
     [GAME_STATUSES.IN_PROGRESS]: () => {
+      const element = createNode("div", "play main");
+      const settingsContainer = Settings();
       const resultPanelElement = ResultPanelComponent();
-      appElement.append(resultPanelElement);
+      // appElement.append(resultPanelElement);
       const gridElement = GridComponent();
-      appElement.append(gridElement);
+      element.append(settingsContainer, gridElement)
+      appElement.append(element);
     },
     [GAME_STATUSES.WING]: () => {
       const loseElement = WinComponent();
