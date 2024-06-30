@@ -1,5 +1,5 @@
 import { Setting } from "./Setting.component.js";
-import { getGridSize, getPointsTo, setGridSize } from "../../data/state-manager.js";
+import { getGridSize, getPointsTo, setGridSize, setPointsToLose, setPointsToWin } from "../../data/state-manager.js";
 import { createNode } from "../../utils/createNode.js";
 import { _settings } from "../../data/constants.js";
 
@@ -7,7 +7,18 @@ function handleChangeGridSize(event) {
   const selectedValue = event.target.value;
 
   setGridSize(selectedValue.split('x'))
-  const { width, height } = getGridSize();
+}
+
+function handleChangePointsToWin(event) {
+  const selectedValue = event.target.value;
+
+  setPointsToWin(selectedValue)
+}
+
+function handleChangePointsToLose(event) {
+  const selectedValue = event.target.value;
+
+  setPointsToLose(selectedValue)
 }
 
 export function Settings(isActive) {
@@ -22,13 +33,18 @@ export function Settings(isActive) {
   const pointsToWinSettings = Setting(
     "Points to win",
     "pointsToWin",
-    _settings.pointsToWin
+    _settings.pointsToWin,
+    handleChangePointsToWin,
+    String(pointsToWin), isActive
   );
 
   const pointsToLoseSettings = Setting(
     "Points to lose",
     "pointsToLose",
-    _settings.pointsToLose
+    _settings.pointsToLose,
+    handleChangePointsToLose,
+    String(pointsToLose),
+    isActive
   );
 
   settingsContainer.append(

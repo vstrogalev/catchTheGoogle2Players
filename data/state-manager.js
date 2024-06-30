@@ -215,3 +215,11 @@ export function getPointsTo() {
     pointsToLose: _state.settings.pointsToLose,
   };
 }
+
+export function setPointsToWin(points) {
+  _state.settings.pointsToWin = points;
+}
+
+export function setPointsToLose(points) {
+  _state.settings.pointsToLose = points;
+}
