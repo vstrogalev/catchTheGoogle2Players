@@ -17,7 +17,7 @@ export function Settings(isActive) {
 
   const settingsContainer = createNode("div", "settings__container");
 
-  const gridSettings = Setting("Grid size", "gridSize", _settings.gridSize, handleChangeGridSize, selectedGridSize);
+  const gridSettings = Setting("Grid size", "gridSize", _settings.gridSize, handleChangeGridSize, selectedGridSize, isActive);
 
   const pointsToWinSettings = Setting(
     "Points to win",

@@ -15,7 +15,7 @@ export function AppComponent() {
   const transitions = {
     [GAME_STATUSES.IN_PROGRESS]: () => {
       const element = createNode("div", "play main");
-      const settingsContainer = Settings();
+      const settingsContainer = Settings(false);
       const resultPanelElement = ResultPanelComponent();
       // appElement.append(resultPanelElement);
       const gridElement = GridComponent();
@@ -29,7 +29,7 @@ export function AppComponent() {
     [GAME_STATUSES.SETTINGS]: () => {
       const element = createNode("div", "settings main");
 
-      const settingsContainer = Settings();
+      const settingsContainer = Settings(true);
 
       const button = Button("START GAME", () => {
         playAgain();
