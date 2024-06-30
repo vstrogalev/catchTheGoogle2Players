@@ -4,8 +4,11 @@ import {
   getPlayerPositions,
   getGridSize,
 } from "../../data/state-manager.js";
-import { svgContent } from "../../images/google.js";
+import { svgContent as GoogleSvg } from "../../images/google.js";
+import { svgContent as Player1Svg } from "../../images/player1.js";
+import { svgContent as Player2Svg } from "../../images/player2.js";
 import { createNode } from "../../utils/createNode.js";
+import { SvgToCell } from "./SvgToCell.component.js";
 
 export function GridComponent() {
   const gridSize = getGridSize();
@@ -17,49 +20,27 @@ export function GridComponent() {
     const rowElement = createNode("tr", "board__row");
 
     for (let x = 0; x < gridSize.width; x++) {
-      // TODO move to CellComponent
-      // const cellElement = CellComponent(x,y)
       const cellElement = createNode("td", "board__item");
       cellElement.style.width = `${_gridItemSize}px`;
       cellElement.style.height = `${_gridItemSize}px`;
 
       if (googlePosition.x === x && googlePosition.y === y) {
-        // TODO: const googleElement = Google();
-        // const googleElement = createNode("svg", "googleImg");
-
-        // Найдите символ и вставьте его в контейнер
-        const googleElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        googleElement.innerHTML = svgContent;
-        // const useElement = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-        // useElement.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#google');
-
-        // googleElement.appendChild(useElement);
-
-        // Установите атрибуты или стили SVG
-        googleElement.setAttribute('width', '100%'); // Пример изменения ширины
-        googleElement.setAttribute('height', '100%'); // Пример изменения высоты
-
-        googleElement.addEventListener("click", () => {
-          //catchGoogle();
-          console.log('click')
-        });
-
-        cellElement.appendChild(googleElement);
-
+        const googleElement = SvgToCell(GoogleSvg, 'svg');
         cellElement.append(googleElement);
       }
 
       if (playerPositions[0].x === x && playerPositions[0].y === y) {
-        // TODO: const googleElement = Google();
-        const playerElement = document.createElement("span");
-        playerElement.append("- P1 -");
-        cellElement.append(playerElement);
+        const player1 = SvgToCell(Player1Svg, 'svg');
+        cellElement.append(player1);
+
+        cellElement.append(player1);
       }
 
       if (playerPositions[1].x === x && playerPositions[1].y === y) {
-        const playerElement = document.createElement("span");
-        playerElement.append("- P2 -");
-        cellElement.append(playerElement);
+        const player2 = SvgToCell(Player2Svg, 'svg');
+        cellElement.append(player2);
+
+        cellElement.append(player2);
       }
 
       rowElement.append(cellElement);

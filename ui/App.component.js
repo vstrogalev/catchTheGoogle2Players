@@ -5,7 +5,7 @@ import { GridComponent } from "./components/Grid.component.js";
 import { ResultPanelComponent } from "./components/ResultPanel.component.js";
 import { createNode } from "../utils/createNode.js";
 import { Button } from "./components/Button.js";
-import { Settings } from "./components/Settings.js";
+import { Settings } from "./components/Settings.component.js";
 
 export function AppComponent() {
   const appElement = createNode("div", "app");

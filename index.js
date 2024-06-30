@@ -1,6 +1,6 @@
 import { subscribe } from "./data/state-manager.js";
 import { AppComponent } from "./ui/App.component.js";
-import { bindKeyboardsControlForMovePlayers } from "./ui/components/controls.js";
+import { bindKeyboardsControlForMovePlayers } from "./ui/components/VoiceControls.component.js";
 
 const rootElement = document.getElementById("root");
 

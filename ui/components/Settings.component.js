@@ -1,4 +1,4 @@
-import { Setting } from "./Setting.js";
+import { Setting } from "./Setting.component.js";
 import { getGridSize, getPointsTo } from '../../data/state-manager.js';
 import { createNode } from "../../utils/createNode.js";
 
