@@ -1,11 +1,25 @@
 import { createNode } from "../../utils/createNode.js";
 
-export function Setting(title, data) {
-  const element = createNode('div', 'setting');
+export function Setting(title, id, data, handler, selected) {
+  const form = createNode('form', 'settings__item');
+  const label = createNode('label', 'setting__titleElement', title);
+  label.setAttribute('for', id);
+  form.append(label);
 
-  const titleElement = createNode('div', 'setting__titleElement', title);
-  const settingElement = createNode('div', 'setting__settingElement', data);
-  element.append(titleElement, settingElement);
+  const selectWrapper = createNode('div', 'setting__settingElement');
+  const select = createNode('select', 'select');
+  select.addEventListener('change', handler);
 
-  return element;
+  data.options.forEach(el => {
+    const option = createNode('option', 'setting__settingElement', el.value);
+    if (el.value === selected) {
+      option.setAttribute('selected', true);
+    }
+    select.append(option);
+  })
+
+  selectWrapper.append(select);
+  form.append(selectWrapper);
+
+  return form;
 }

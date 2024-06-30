@@ -17,6 +17,7 @@ const _state = {
       width: 4,
       height: 4,
     },
+    sound: false
   },
   positions: {
     google: {
@@ -131,6 +132,12 @@ export function getGridSize() {
     height: _state.settings.gridSize.height,
     width: _state.settings.gridSize.width,
   };
+}
+
+export function setGridSize(selected) {
+  _state.settings.gridSize.width = selected[0];
+  _state.settings.gridSize.height = selected[1];
+
 }
 
 export function getGooglePosition() {
