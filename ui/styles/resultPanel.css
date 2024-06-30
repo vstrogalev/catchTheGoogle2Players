@@ -1,11 +1,32 @@
 .result {
   margin: 36px auto 0;
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-between;
   align-items: center;
   padding: 12px 36px;
   border: 1px solid rgb(76, 94, 80);
   border-radius: 30px;
   background: rgba(57, 61, 55, 0.4);
   color: #ffff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.result__item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.result__itemTitle {
+}
+
+.result__image {
+}
+
+.result__points {
 }

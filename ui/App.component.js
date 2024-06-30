@@ -24,7 +24,7 @@ export function AppComponent() {
         resultPanelElement,
         gridElement
       );
-      
+
       appElement.append(element);
     },
     [GAME_STATUSES.WING]: () => {
@@ -36,11 +36,14 @@ export function AppComponent() {
 
       const settingsContainer = Settings(true);
 
+      // TODO get rid - it's testing
+      const resultPanelElement = ResultPanelComponent();
+
       const button = Button("START GAME", () => {
         playAgain();
       });
 
-      element.append(settingsContainer, button);
+      element.append(settingsContainer, resultPanelElement, button);
       appElement.append(element);
     },
     [GAME_STATUSES.WIN]: () => {

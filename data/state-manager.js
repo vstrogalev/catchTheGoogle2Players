@@ -115,13 +115,16 @@ function _catchGoogle(playerId) {
 
 // getter/selector/query/CQS/mapper
 export function getPoints() {
-  return {
-    google: _state.points.google,
-    players: Object.values(_state.points.players).map((points) => {
-      return { ...points };
-    }),
-  };
+  return JSON.parse(JSON.stringify(_state.points));
 }
+/*
+const points: {
+    google: number;
+    players: [string, {
+        value: number;
+    }][];
+}
+*/
 
 export function getGameStatus() {
   return _state.gameStatus;
@@ -166,21 +169,20 @@ export function playAgain() {
   _state.points.google = 0;
   Object.values(_state.points.players).forEach(player => player.value = 0);
 
-  // positions to random
   const maxXPosition = getGridSize().width - 1;
   const maxYPosition = getGridSize().height - 1;
 
+  // positions to random
   _state.positions.players[PLAYERS.PLAYER1].x = 1 + Math.floor(Math.random()*maxXPosition);
   _state.positions.players[PLAYERS.PLAYER1].y = 1 + Math.floor(Math.random()*maxYPosition);
-  console.log(_state.positions.players[PLAYERS.PLAYER1]);
+
   do {
     _state.positions.players[PLAYERS.PLAYER2].x = 1 + Math.floor(Math.random(maxXPosition));
     _state.positions.players[PLAYERS.PLAYER2].y = 1 + Math.floor(Math.random(maxYPosition));
   } while (isCoordinatesOfPlayersAreEqual());
 
-  console.log(_state.positions.players[PLAYERS.PLAYER2]);
-
   _moveGoogleToRandomPosition();
+
   _play();
   _observer();
 }
