@@ -17,9 +17,14 @@ export function AppComponent() {
       const element = createNode("div", "play main");
       const settingsContainer = Settings(false);
       const resultPanelElement = ResultPanelComponent();
-      // appElement.append(resultPanelElement);
       const gridElement = GridComponent();
-      element.append(settingsContainer, gridElement)
+
+      element.append(
+        settingsContainer,
+        resultPanelElement,
+        gridElement
+      );
+      
       appElement.append(element);
     },
     [GAME_STATUSES.WING]: () => {

@@ -67,33 +67,33 @@ function _moveGoogleToRandomPosition() {
 let _intervalId;
 
 function _play() {
-  _state.points.google++;
+  // _state.points.google++;
 
-  if (_state.points.google === _state.settings.pointsToLose) {
-    clearInterval(_intervalId);
-    _state.gameStatus = GAME_STATUSES.LOSE;
-  } else {
-    _moveGoogleToRandomPosition();
-  }
+  // if (_state.points.google === _state.settings.pointsToLose) {
+  //   clearInterval(_intervalId);
+  //   _state.gameStatus = GAME_STATUSES.LOSE;
+  // } else {
+  //   _moveGoogleToRandomPosition();
+  // }
 
-  _state.positions.google.x = 0;
-  _state.positions.google.y = 0;
+  // _state.positions.google.x = 0;
+  // _state.positions.google.y = 0;
 
-  _observer();
+  // _observer();
 
 
-  // _intervalId = setInterval(() => {
-  //   _state.points.google++;
+  _intervalId = setInterval(() => {
+    _state.points.google++;
 
-  //   if (_state.points.google === _state.settings.pointsToLose) {
-  //     clearInterval(_intervalId);
-  //     _state.gameStatus = GAME_STATUSES.LOSE;
-  //   } else {
-  //     _moveGoogleToRandomPosition();
-  //   }
+    if (_state.points.google === _state.settings.pointsToLose) {
+      clearInterval(_intervalId);
+      _state.gameStatus = GAME_STATUSES.LOSE;
+    } else {
+      _moveGoogleToRandomPosition();
+    }
 
-  //   _observer();
-  // }, 3000);
+    _observer();
+  }, 1000);
 }
 
 // TODO move to Play component
@@ -152,11 +152,35 @@ export function getPlayerPositions() {
   });
 }
 
+function isCoordinatesOfPlayersAreEqual() {
+  return (
+    _state.positions.players[PLAYERS.PLAYER1].x === _state.positions.players[PLAYERS.PLAYER2].x && _state.positions.players[PLAYERS.PLAYER1].y === _state.positions.players[PLAYERS.PLAYER2].y
+  )
+}
+
 // setter/command/mutation/side-effect
 export function playAgain() {
   _state.gameStatus = GAME_STATUSES.IN_PROGRESS;
+
+  // points to zero
   _state.points.google = 0;
   Object.values(_state.points.players).forEach(player => player.value = 0);
+
+  // positions to random
+  const maxXPosition = getGridSize().width - 1;
+  const maxYPosition = getGridSize().height - 1;
+
+  _state.positions.players[PLAYERS.PLAYER1].x = 1 + Math.floor(Math.random()*maxXPosition);
+  _state.positions.players[PLAYERS.PLAYER1].y = 1 + Math.floor(Math.random()*maxYPosition);
+  console.log(_state.positions.players[PLAYERS.PLAYER1]);
+  do {
+    _state.positions.players[PLAYERS.PLAYER2].x = 1 + Math.floor(Math.random(maxXPosition));
+    _state.positions.players[PLAYERS.PLAYER2].y = 1 + Math.floor(Math.random(maxYPosition));
+  } while (isCoordinatesOfPlayersAreEqual());
+
+  console.log(_state.positions.players[PLAYERS.PLAYER2]);
+
+  _moveGoogleToRandomPosition();
   _play();
   _observer();
 }
