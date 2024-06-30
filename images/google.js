@@ -1,4 +1,4 @@
-export const svgContent = `<svg viewBox="0 0 45.9319 46.9333" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+export const svgContent = `<svg width="48" height="48" fill="none">
     <desc>Created with Pixso.</desc>
     <defs/>
     <path id="Fill-1" d="M9.61 23.46C9.61 21.94 9.86 20.48 10.31 19.11L2.4 13.07C0.86 16.2 0 19.72 0 23.46C0 27.2 0.86 30.72 2.4 33.85L10.31 27.8C9.86 26.43 9.61 24.98 9.61 23.46Z" fill="#FBBC05" fill-opacity="1.000000" fill-rule="evenodd"/>
