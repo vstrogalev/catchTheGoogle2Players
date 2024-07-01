@@ -36,14 +36,11 @@ export function AppComponent() {
 
       const settingsContainer = Settings(true);
 
-      // TODO get rid - it's testing
-      const resultPanelElement = ResultPanelComponent();
-
       const button = Button("START GAME", () => {
         playAgain();
       });
 
-      element.append(settingsContainer, resultPanelElement, button);
+      element.append(settingsContainer, button);
       appElement.append(element);
     },
     [GAME_STATUSES.WIN]: () => {
