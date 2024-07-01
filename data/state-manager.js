@@ -67,21 +67,6 @@ function _moveGoogleToRandomPosition() {
 let _intervalId;
 
 function _play() {
-  // _state.points.google++;
-
-  // if (_state.points.google === _state.settings.pointsToLose) {
-  //   clearInterval(_intervalId);
-  //   _state.gameStatus = GAME_STATUSES.LOSE;
-  // } else {
-  //   _moveGoogleToRandomPosition();
-  // }
-
-  // _state.positions.google.x = 0;
-  // _state.positions.google.y = 0;
-
-  // _observer();
-
-
   _intervalId = setInterval(() => {
     _state.points.google++;
 
@@ -173,12 +158,12 @@ export function playAgain() {
   const maxYPosition = getGridSize().height - 1;
 
   // positions to random
-  _state.positions.players[PLAYERS.PLAYER1].x = 1 + Math.floor(Math.random()*maxXPosition);
-  _state.positions.players[PLAYERS.PLAYER1].y = 1 + Math.floor(Math.random()*maxYPosition);
+  _state.positions.players[PLAYERS.PLAYER1].x = 1 + _getRandomInt(maxXPosition);
+  _state.positions.players[PLAYERS.PLAYER1].y = 1 + _getRandomInt(maxYPosition);
 
   do {
-    _state.positions.players[PLAYERS.PLAYER2].x = 1 + Math.floor(Math.random(maxXPosition));
-    _state.positions.players[PLAYERS.PLAYER2].y = 1 + Math.floor(Math.random(maxYPosition));
+    _state.positions.players[PLAYERS.PLAYER2].x = 1 + _getRandomInt(maxXPosition);
+    _state.positions.players[PLAYERS.PLAYER2].y = 1 + _getRandomInt(maxYPosition);
   } while (isCoordinatesOfPlayersAreEqual());
 
   _moveGoogleToRandomPosition();
@@ -243,9 +228,9 @@ export function getPointsTo() {
 }
 
 export function setPointsToWin(points) {
-  _state.settings.pointsToWin = points;
+  _state.settings.pointsToWin = Number(points);
 }
 
 export function setPointsToLose(points) {
-  _state.settings.pointsToLose = points;
+  _state.settings.pointsToLose = Number(points);
 }

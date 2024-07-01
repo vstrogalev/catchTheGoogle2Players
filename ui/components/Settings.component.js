@@ -19,6 +19,7 @@ function handleChangePointsToLose(event) {
   const selectedValue = event.target.value;
 
   setPointsToLose(selectedValue)
+  console.log('points to lose', selectedValue)
 }
 
 export function Settings(isActive) {
