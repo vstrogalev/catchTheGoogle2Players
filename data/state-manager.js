@@ -11,8 +11,8 @@ const _state = {
     },
   },
   settings: {
-    pointsToLose: 30,
-    pointsToWin: 5,
+    pointsToLose: 5,
+    pointsToWin: 20,
     gridSize: {
       width: 4,
       height: 4,
